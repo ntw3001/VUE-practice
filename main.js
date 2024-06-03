@@ -1,4 +1,4 @@
-const app = Vue.createApp({
+const instance = Vue.createApp({
     data() {
         return {
             product: 'Socks',
