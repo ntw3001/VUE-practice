@@ -12,6 +12,10 @@
     <div id="app">
       <div class="nav-bar"></div>
 
+      <div class="sales-info">
+        <p v-if="sale">{{ onSale }}</p>
+      </div>
+
       <div class="cart">Cart({{ cart }})</div>
 
       <div class="product-display">
