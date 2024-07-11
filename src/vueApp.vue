@@ -1,14 +1,18 @@
 <template>
-  <h1>The {{ name }} draws near</h1>
+  <div>
+    <app-header/>
+    <div>
+      Look! Look!
+    </div>
+    <Footer/>
+  </div>
 </template>
 
 <script setup>
-  import {ref} from "vue";
-  const name = "Framcos"
-  </script>
+  import Footer from "@/components/header_footer/footer.vue";
+
+</script>
 
 <style>
-  div {
-    color: green;
-  }
+
 </style>
