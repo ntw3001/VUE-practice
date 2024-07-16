@@ -3,11 +3,15 @@
     <app-header/>
     <div class="container">
       <UserProfile
-        :name="data.name"
-        :lastName="data.lastName"
-        :aka="data.aka"
+        :userName="data.name"
+        :userLastName="data.lastName"
+        :userAka="data.aka"
+        :userAge="data.age"
+        :userParents="data.parents"
+        :userFavourites="data.favourites"
       />
       <button @click="updateName">Change name to {{data.secretName}}</button>
+      <button @click="updateAge">Grow one year</button>
     </div>
     <Footer/>
   </div>
@@ -22,7 +26,16 @@
     name: "Progle",
     lastName: "Doe",
     aka: "Framcos",
-    secretName: "John"
+    secretName: "John",
+    age: 25,
+    favourites: {
+      colour: "blue",
+      toy: "train"
+    },
+    parents: {
+      father: "Sebastian French",
+      mother: "Margaret [NO NAME GIVEN]"
+    }
   });
 
   const updateName = () => {
@@ -33,6 +46,10 @@
     } else {
       data.name = "Progle";
       data.secretName = "John"}
+  };
+
+  const updateAge = () => {
+    data.age += 1;
   };
 </script>
 
