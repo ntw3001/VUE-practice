@@ -33,13 +33,17 @@
         </li>
       </ul>
       <hr/>
-      <button @click="updateLastName">Change from the child</button>
+      <button @click="updateLastName">Redact last name</button>
+      <button @click="updateAge(100)">Become 100 years old</button>
     </div>
+    <hr/>
+    What does vueApp.vue think of my progress?
+    <button @click="sayHello">FIND OUT</button>
 </template>
 
 <script setup>
 
-const emit = defineEmits(['update-lastname']);
+const emit = defineEmits(['update-lastname', 'say-hello']);
 
   const props = defineProps({
     userName: String,
@@ -47,7 +51,8 @@ const emit = defineEmits(['update-lastname']);
     userLastName: String,
     userAge: Number,
     userFavourites: Object,
-    userParents: Object
+    userParents: Object,
+    updateAge: Function
   });
 
   const updateLastName = () => {
@@ -58,6 +63,9 @@ const emit = defineEmits(['update-lastname']);
     return input.charAt(0).toUpperCase() + input.slice(1);
   }
 
+  const sayHello = () => {
+    emit("say-hello");
+  }
 </script>
 
 <style scoped>

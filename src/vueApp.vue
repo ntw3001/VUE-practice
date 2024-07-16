@@ -10,9 +10,11 @@
         :userParents="data.parents"
         :userFavourites="data.favourites"
         @update-lastname="data.lastName = $event"
+        @say-hello="alertHello"
+        :update-age="updateAge"
       />
+      <hr/>
       <button @click="updateName">Change name to {{data.secretName}}</button>
-      <button @click="updateAge">Grow one year</button>
     </div>
     <Footer/>
   </div>
@@ -49,8 +51,12 @@
       data.secretName = "John"}
   };
 
-  const updateAge = () => {
-    data.age += 1;
+  const updateAge = (value) => {
+    data.age = value
+  };
+
+  const alertHello = () => {
+    alert("vueApp.vue says you're doing great!");
   };
 </script>
 
