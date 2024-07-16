@@ -9,6 +9,7 @@
         :userAge="data.age"
         :userParents="data.parents"
         :userFavourites="data.favourites"
+        @update-lastname="data.lastName = $event"
       />
       <button @click="updateName">Change name to {{data.secretName}}</button>
       <button @click="updateAge">Grow one year</button>

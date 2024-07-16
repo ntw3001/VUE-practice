@@ -32,10 +32,15 @@
           <span>{{ capitalizeFirstLetter(key) }}:</span> {{ value }}
         </li>
       </ul>
+      <hr/>
+      <button @click="updateLastName">Change from the child</button>
     </div>
 </template>
 
 <script setup>
+
+const emit = defineEmits(['update-lastname']);
+
   const props = defineProps({
     userName: String,
     userAka: String,
@@ -45,6 +50,9 @@
     userParents: Object
   });
 
+  const updateLastName = () => {
+    emit("update-lastname", "[REDACTED]");
+  }
 
   const capitalizeFirstLetter = (input) => {
     return input.charAt(0).toUpperCase() + input.slice(1);
