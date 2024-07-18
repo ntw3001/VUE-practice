@@ -47,9 +47,23 @@ const emit = defineEmits(['update-lastname', 'say-hello']);
 
   const props = defineProps({
     userName: String,
-    userAka: String,
-    userLastName: String,
-    userAge: Number,
+    userAka: {
+      type: String,
+      required: true,
+      default: "None"
+    },
+    userLastName: {
+      type: String,
+      validator(value) {
+        if (value === "Doe") {
+          return true
+        } else {
+          return false
+        }
+
+      }
+    },
+    userAge: [Number, String],
     userFavourites: Object,
     userParents: Object,
     updateAge: Function

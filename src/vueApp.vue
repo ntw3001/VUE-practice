@@ -30,7 +30,7 @@
     lastName: "Doe",
     aka: "Framcos",
     secretName: "John",
-    age: 25,
+    age: "Twenty-five",
     favourites: {
       colour: "blue",
       toy: "train"
