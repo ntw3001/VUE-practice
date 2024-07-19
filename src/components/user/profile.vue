@@ -55,7 +55,7 @@ const emit = defineEmits(['update-lastname', 'say-hello']);
     userLastName: {
       type: String,
       validator(value) {
-        if (value === "Doe") {
+        if (value === "Doe" || "[REDACTED]") {
           return true
         } else {
           return false

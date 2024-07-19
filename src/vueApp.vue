@@ -2,62 +2,24 @@
   <div>
     <app-header/>
     <div class="container">
-      <UserProfile
-        :userName="data.name"
-        :userLastName="data.lastName"
-        :userAka="data.aka"
-        :userAge="data.age"
-        :userParents="data.parents"
-        :userFavourites="data.favourites"
-        @update-lastname="data.lastName = $event"
-        @say-hello="alertHello"
-        :update-age="updateAge"
+      <Cars
+        :cars="cars"
       />
-      <hr/>
-      <button @click="updateName">Change name to {{data.secretName}}</button>
     </div>
-    <Footer/>
   </div>
 </template>
 
 <script setup>
-  import Footer from "@/components/header_footer/footer.vue"
-  import UserProfile from "@/components/user/profile.vue"
-  import {reactive} from "vue"
+  import { reactive } from "vue"
+  import Cars from "@/components/cars/index.vue"
 
-  const data = reactive({
-    name: "Progle",
-    lastName: "Doe",
-    aka: "Framcos",
-    secretName: "John",
-    age: "Twenty-five",
-    favourites: {
-      colour: "blue",
-      toy: "train"
-    },
-    parents: {
-      father: "Sebastian French",
-      mother: "Margaret [NO NAME GIVEN]"
-    }
-  });
-
-  const updateName = () => {
-
-    if (data.name ==="Progle") {
-      data.name = "John";
-      data.secretName = "Progle"
-    } else {
-      data.name = "Progle";
-      data.secretName = "John"}
-  };
-
-  const updateAge = (value) => {
-    data.age = value
-  };
-
-  const alertHello = () => {
-    alert("vueApp.vue says you're doing great!");
-  };
+  const cars = reactive([
+    {model:"Batman Car", brand: "DC"},
+    {model:"Jamaican Car", brand: "Jamaican"},
+    {model:"Royal Racer", brand: "Mushroom Kingdom"},
+    {model:"Compact Pussycat", brand: "Hanna-Barbera"},
+    {model:"Mystery Machine", brand: "Hanna-Barbera"}
+  ])
 </script>
 
 <style>
