@@ -1,9 +1,7 @@
 <template>
   <h1>It's cars bitchezz</h1>
   <hr/>
-  <CarsList
-    :cars="cars"
-    />
+  <CarsList/>
 </template>
 
 
