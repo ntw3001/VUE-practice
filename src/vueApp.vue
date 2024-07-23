@@ -3,6 +3,14 @@
     <app-header/>
     <div class="container">
       <Cars/>
+      <hr/>
+      <CarBrands>
+        <ul>
+          <li>Yes</li>
+          <li>Yess</li>
+          <li>Yesss</li>
+        </ul>
+      </CarBrands>
     </div>
   </div>
 </template>
@@ -10,6 +18,7 @@
 <script setup>
   import { reactive, provide } from "vue"
   import Cars from "@/components/cars/index.vue"
+  import CarBrands from "@/components/cars/brands.vue"
 
   const cars = reactive([
     {model:"Batman Car", brand: "DC"},

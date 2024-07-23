@@ -5,8 +5,6 @@
         <span>{{ car.brand }}</span> {{ car.model }}
       </li>
     </ul>
-    <hr/>
-    <button @click="updateCar">Update Car</button>
   </div>
 </template>
 
