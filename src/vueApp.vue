@@ -6,9 +6,9 @@
       <hr/>
       <CarBrands>
         <ul>
-          <li>Yes</li>
-          <li>Yess</li>
-          <li>Yesss</li>
+          <li v-for="(brand, index) in brands" :key="index">
+            {{ brand }}
+          </li>
         </ul>
       </CarBrands>
     </div>
@@ -19,6 +19,8 @@
   import { reactive, provide } from "vue"
   import Cars from "@/components/cars/index.vue"
   import CarBrands from "@/components/cars/brands.vue"
+
+  const brands = reactive(["Yes", "Yess", "Yesss"])
 
   const cars = reactive([
     {model:"Batman Car", brand: "DC"},
