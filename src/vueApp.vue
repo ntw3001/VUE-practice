@@ -5,11 +5,17 @@
       <Cars/>
       <hr/>
       <CarBrands>
-        <ul>
-          <li v-for="(brand, index) in brands" :key="index">
-            {{ brand }}
-          </li>
-        </ul>
+        <template v-slot:brands>
+          <ul>
+            <li v-for="(brand, index) in brands" :key="index">
+              {{ brand }}
+            </li>
+          </ul>
+        </template>
+        <template v-slot:other>
+          <div>Other content</div>
+        </template>
+        <strong>Default slot</strong>
       </CarBrands>
     </div>
   </div>
