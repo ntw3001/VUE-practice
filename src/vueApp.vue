@@ -2,45 +2,17 @@
   <div>
     <app-header/>
     <div class="container">
-      <Cars/>
-      <hr/>
-      <CarBrands>
-        <template v-slot:brands>
-          <ul>
-            <li v-for="(brand, index) in brands" :key="index">
-              {{ brand }}
-            </li>
-          </ul>
-        </template>
-        <template v-slot:other>
-          <div>Other content</div>
-        </template>
-        <strong>Default slot</strong>
-      </CarBrands>
+      <Life/>
     </div>
   </div>
+  <Footer/>
 </template>
 
 <script setup>
-  import { reactive, provide } from "vue"
-  import Cars from "@/components/cars/index.vue"
-  import CarBrands from "@/components/cars/brands.vue"
+  import { reactive} from "vue"
+  import Life from "./components/life/index.vue"
+  import Footer from "@/components/header_footer/footer.vue"
 
-  const brands = reactive(["Yes", "Yess", "Yesss"])
-
-  const cars = reactive([
-    {model:"Batman Car", brand: "DC"},
-    {model:"Jamaican Car", brand: "Jamaican"},
-    {model:"Royal Racer", brand: "Mushroom Kingdom"},
-    {model:"Compact Pussycat", brand: "Hanna-Barbera"},
-    {model:"Mystery Machine", brand: "Hanna-Barbera"}
-  ])
-
-  const updateCar = () => {
-    cars[0].model = "Batmobile"
-  }
-
-  provide ("cars", {cars, updateCar})
 
 </script>
 
