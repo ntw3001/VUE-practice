@@ -5,17 +5,19 @@
       <Progle v-if="activeComponent === Progle"/> -->
       <button @click="activeComponent = Framcos">Framcos</button>
       <button @click="activeComponent = Progle">Progle</button>
-      <component :is="activeComponent"/>
+      <keep-alive include="Framcos">
+        <component :is="activeComponent"/>
+      </keep-alive>
     </div>
   <app-footer/>
 </template>
 
 <script setup>
-import { ref, shallowRef } from "vue"
+import { shallowRef } from "vue"
 import Framcos from "./components/players/Framcos.vue"
 import Progle from "./components/players/Progle.vue"
 
-const activeComponent = shallowRef("Framcos")
+const activeComponent = shallowRef()
 </script>
 
 <style>
