@@ -1,19 +1,21 @@
 <template>
-  <div>
-    <app-header/>
+  <app-header/>
     <div class="container">
-      <Life/>
+      <!-- <Framcos v-if="activeComponent === Framcos"/>
+      <Progle v-if="activeComponent === Progle"/> -->
+      <button @click="activeComponent = Framcos">Framcos</button>
+      <button @click="activeComponent = Progle">Progle</button>
+      <component :is="activeComponent"/>
     </div>
-  </div>
-  <Footer/>
+  <app-footer/>
 </template>
 
 <script setup>
-  import { reactive} from "vue"
-  import Life from "./components/life/index.vue"
-  import Footer from "@/components/header_footer/footer.vue"
+import { ref, shallowRef } from "vue"
+import Framcos from "./components/players/Framcos.vue"
+import Progle from "./components/players/Progle.vue"
 
-
+const activeComponent = shallowRef("Framcos")
 </script>
 
 <style>
