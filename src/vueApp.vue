@@ -5,9 +5,11 @@
       <Progle v-if="activeComponent === Progle"/> -->
       <button @click="activeComponent = Framcos">Framcos</button>
       <button @click="activeComponent = Progle">Progle</button>
-      <keep-alive include="Framcos">
+      <keep-alive :include="['Framcos', 'Progle']">
         <component :is="activeComponent"/>
       </keep-alive>
+    </div>
+    <div id="czech">
     </div>
   <app-footer/>
 </template>
