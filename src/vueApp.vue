@@ -1,25 +1,15 @@
 <template>
-  <app-header/>
-    <div class="container">
-      <!-- <Framcos v-if="activeComponent === Framcos"/>
-      <Progle v-if="activeComponent === Progle"/> -->
-      <button @click="activeComponent = Framcos">Framcos</button>
-      <button @click="activeComponent = Progle">Progle</button>
-      <keep-alive :include="['Framcos', 'Progle']">
-        <component :is="activeComponent"/>
-      </keep-alive>
-    </div>
-    <div id="czech">
-    </div>
-  <app-footer/>
+  <div>
+    <app-header/>
+      <div class="container">
+        <Directives/>
+      </div>
+    <app-footer/>
+  </div>
 </template>
 
 <script setup>
-import { shallowRef } from "vue"
-import Framcos from "./components/players/Framcos.vue"
-import Progle from "./components/players/Progle.vue"
-
-const activeComponent = shallowRef()
+  import Directives from '@/components/directives/index.vue';
 </script>
 
 <style>
