@@ -1,5 +1,8 @@
 <template>
-<div v-cooldir:red.big="textToRender"></div>
+  <div v-cooldir:red.big="textToRender"></div>
+  <button @click="textToRender = 'Don\'t use such language'">
+    Update
+  </button>
 </template>
 
 <script setup>

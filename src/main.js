@@ -8,10 +8,14 @@ const app = createApp(vueApp);
 
 app.component("app-header", Header)
 app.component("app-footer", Footer)
+
 app.directive("cooldir", {
+  created(el) {
+    console.log("created")
+    console.log(el.parentNode)
+  },
+
   beforeMount(el, binding, vnode) {
-    console.log(binding.arg)
-    console.log(binding.modifiers)
 
     el.style.fontSize = binding.modifiers.big ? "50px" : "20px"
 
@@ -23,6 +27,24 @@ app.directive("cooldir", {
       el.style.color = "blue"
     }
 
+    console.log("beforeMount")
+    console.log(el.parentNode)
+  },
+
+  mounted(el) {
+    console.log("mounted")
+    console.log(el.parentNode)
+  },
+
+  beforeUpdate(el, binding) {
+    console.log("beforeUpdate")
+    console.log(el.parentNode)
+    el.innerHTML = binding.value
+  },
+
+  updated(el) {
+    console.log("updated")
+    console.log(el.parentNode)
   }
 })
 app.mount("#app")
