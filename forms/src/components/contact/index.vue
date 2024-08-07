@@ -11,7 +11,7 @@
               type="text"
               id="name"
               class="form-control"
-              v-model="formData.name"
+              v-model.lazy="formData.name"
             />
           </div>
 
@@ -21,7 +21,7 @@
               type="email"
               id="email"
               class="form-control"
-              v-model="formData.email"
+              v-model.lazy="formData.email"
             />
           </div>
 
@@ -31,7 +31,7 @@
               type="text"
               id="subject"
               class="form-control"
-              v-model="formData.subject"
+              v-model.lazy="formData.subject"
             />
           </div>
 
@@ -41,7 +41,7 @@
               class="form-control"
               rows="3"
               id="message"
-              v-model="formData.message"
+              v-model.lazy="formData.message"
             ></textarea>
           </div>
 
@@ -49,14 +49,18 @@
           <div class="mb-3">
               <h5>Want more spam ? </h5>
               <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="Newsletter" id="newsletter"
+                  <input class="form-check-input" type="checkbox"
+                  value="Newsletter" id="newsletter"
+                  v-model="formData.extras"
                   >
                   <label class="form-check-label" for="newsletter">
                       Newsletter
                   </label>
               </div>
               <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="Promotions" id="promotions"
+                  <input class="form-check-input" type="checkbox"
+                  value="Promotions" id="promotions"
+                  v-model="formData.extras"
                   >
                   <label class="form-check-label" for="newsletter">
                       Promotions
@@ -67,14 +71,18 @@
            <div class="mb-3">
               <h5>What are you ? </h5>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" id="human" value="human" name="origin"
+                  <input class="form-check-input" type="radio"
+                  id="human" value="human" name="origin"
+                  v-model="formData.origin"
                   >
                   <label class="form-check-label" for="human">
                       Human
                   </label>
               </div>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" id="alien" value="alien" name="origin"
+                  <input class="form-check-input" type="radio"
+                  id="alien" value="alien" name="origin"
+                  v-model="formData.origin"
                   >
                   <label class="form-check-label" for="alien">
                       Alien
@@ -104,8 +112,7 @@ const formData = reactive({
     email: '',
     subject: '',
     message: '',
-    newsletter: false,
-    promotions: false,
+    extras: [],
     origin: ''
 })
 
