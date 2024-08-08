@@ -1,5 +1,7 @@
 <template>
-    <form>
+    <form
+      @submit.prevent="checkForm"
+    >
       <div class="row">
         <div class="col-xl-12">
           <h1>Contact us</h1>
@@ -90,9 +92,18 @@
               </div>
           </div>
 
+          <hr/>
+
+          <p v-if="errors.length">
+              <strong>Terrible form, try again:</strong>
+              <ul>
+                  <li v-for="error in errors" :key="error">{{ error }}</li>
+              </ul>
+          </p>
+
             <button
                 class="btn btn-primary"
-                @click.prevent="submitForm"
+                @click="submitForm"
             >
             Submit
             </button>
@@ -107,6 +118,8 @@
 <script setup>
 import{ reactive } from 'vue'
 
+const errors = reactive([])
+
 const formData = reactive({
     name: '',
     email: '',
@@ -115,6 +128,17 @@ const formData = reactive({
     extras: [],
     origin: ''
 })
+
+const checkForm = (e) => {
+    // e.preventDefault()
+    errors.splice(0)
+    if (!formData.name){errors.push('Name required')}
+    if (!formData.email){errors.push('Email required')}
+    if (!formData.subject){errors.push('Subject required')}
+    if (!formData.message){errors.push('Message required')}
+    if (!formData.origin){errors.push('Origin required')}
+    if (!errors.length){submitForm()}
+}
 
 const submitForm = () => {
     console.log(JSON.stringify(formData))
