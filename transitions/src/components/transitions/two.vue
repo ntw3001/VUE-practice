@@ -5,7 +5,15 @@
     Toggle Status
   </button>
 
-  <transition mode="out-in">
+  <transition
+    mode="out-in"
+    @before-enter="beforeEnter"
+    @enter="enter"
+    @after-enter="afterEnter"
+    @before-leave="beforeLeave"
+    @leave="leave"
+    @after-leave="afterLeave"
+  >
     <div class="p-3 mb-2 bg-danger text-white"
         v-if="!status"
         key="status_off"
@@ -37,9 +45,16 @@
 
    const status = ref(false);
 
-   const data = ref({
-    display:false
-   })
+  function beforeEnter(){console.log('1 - beforeEnter')}
+  function enter(){console.log('2 - enter')}
+  function afterEnter(){console.log('3 - afterEnter')}
+  function beforeLeave(){console.log('4 - beforeLeave')}
+  function leave(){console.log('5 - leave')}
+  function afterLeave(){console.log('6 - afterLeave')}
+
+  //  const data = ref({
+  //   display:false
+  //  })
 </script>
 
 <style>
@@ -58,5 +73,6 @@
   .v-leave-from,
   .v-enter-to {
     opacity: 1;
+    }
 
-  }</style>
+</style>
