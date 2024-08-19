@@ -27,7 +27,7 @@ import { Field, Form, ErrorMessage } from 'vee-validate';
 import * as yup from 'yup';
 
 const formSchema = yup.object({
-  name: yup.string().required("Tell me your name").notOneOf(['Homer'], "No Homers! (We're allowed one)").max(5, "Wow, your name is too long for a dumb robot like me to remember!")
+  name: yup.string().required("Tell me your name").notOneOf(['Homer'], "No Homers! (We're allowed one)").max(10, "Wow, your name is too long for a dumb robot like me to remember!")
 });
 
 function onSubmit(values, {resetForm}) {
