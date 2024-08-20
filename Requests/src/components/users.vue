@@ -2,13 +2,13 @@
     <div class="row">
         <div
           class="col-auto mb-4"
-          v-for="user in data.users"
+          v-for="(user) in data.users"
           :key="user.id"
         >
             <div class="card" style="width: 14rem;">
                 <img
                     class="card-img-top"
-                    src="'https://placebeard.it/300/300' + user.id"
+                    src="https://placebeard.it/300/300"
                     alt="Card image cap"
                 >
                 <div class="card-body">
@@ -27,15 +27,16 @@
 <script setup>
 
 import axios from "axios";
-import { reactive } from "vue";
+import { onMounted, reactive } from "vue";
 
 const data = reactive({
   user:[]
 })
 
 const loadUsers = () => {
-  axios.get("http://127.0.0.1:5173/users")
+  axios.get("http://localhost:3004/users")
   .then(response=>{
+    console.log(response.data)
     data.users = response.data
   })
   .catch(error=>{
@@ -43,6 +44,8 @@ const loadUsers = () => {
   })
 }
 
-loadUsers()
+onMounted(()=>{
+  loadUsers()
+})
 
 </script>
