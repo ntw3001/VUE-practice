@@ -8,7 +8,7 @@
             <div class="card" style="width: 14rem;">
                 <img
                     class="card-img-top"
-                    src="https://placebeard.it/300/300"
+                    :src="'https://placebeard.it/300/300?' + user.id"
                     alt="Card image cap"
                 >
                 <div class="card-body">
