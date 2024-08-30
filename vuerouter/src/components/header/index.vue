@@ -12,10 +12,14 @@
 
       <ul class="nav nav-pills">
         <li class="nav-item">
-          <a href="#" class="nav-link active" aria-current="page">Home</a>
+          <router-link to="/" class="nav-link active">Home</router-link>
         </li>
-        <li class="nav-item"><a href="#" class="nav-link">Articles</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+        <li class="nav-item">
+          <router-link to="/articles" class="nav-link">Articles</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/contact" class="nav-link">Contact</router-link>
+        </li>
       </ul>
     </header>
   </div>
