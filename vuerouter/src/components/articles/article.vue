@@ -1,4 +1,8 @@
 <template>
+
+  <router-link to="/articles/3">
+    Leave this place.
+  </router-link>
   <div v-if="Object.keys(article).length !==0">
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
       <div class="col-md-6 px-0">
@@ -46,21 +50,27 @@
 
 <script setup>
 
-import axios from "axios"
-import { useRoute } from 'vue-router'
-import { onMounted, ref } from 'vue'
+  import axios from "axios"
+  import { useRoute } from 'vue-router'
+  import { onMounted, ref, watch } from 'vue'
 
-const route = useRoute();
-const article = ref({});
+  const route = useRoute();
+  const article = ref({});
 
-const loadArticleData = (articleID) => {
-  axios.get(`http://localhost:3000/articles/${articleID}`)
-    .then(response => {
-      article.value = response.data
-    })
-}
+  const loadArticleData = (articleID) => {
+    axios.get(`http://localhost:3000/articles/${articleID}`)
+      .then(response => {
+        article.value = response.data
+      })
+  }
 
-onMounted(()=>{
-  loadArticleData(route.params.articleID)})
+  onMounted(()=>{
+    loadArticleData(route.params.articleID)})
 
+  watch(
+    () => route.params.articleID,
+    async newID => {
+      loadArticleData(newID)
+    }
+  )
 </script>
