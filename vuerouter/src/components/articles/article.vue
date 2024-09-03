@@ -54,6 +54,9 @@
   import { useRoute } from 'vue-router'
   import { onMounted, ref, watch } from 'vue'
 
+  const props = defineProps(["bananas"]);
+  console.log(props.bananas)
+
   const route = useRoute();
   const article = ref({});
 

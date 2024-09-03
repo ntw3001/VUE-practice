@@ -3,15 +3,24 @@ import Articles from '../components/articles/index.vue';
 import Contact from '../components/contact/index.vue';
 import Home from '../components/home.vue';
 import Article from '../components/articles/article.vue';
+import NotFound from "../components/404/404.vue";
+
+const propProcessing = (route) => {
+  return {
+    bananas: route.path + " smells"
+  }
+}
 
 const router = createRouter ({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/articles', component: Articles },
-    { path: '/articles/:articleID', component: Article },
-    { path: '/contact', component: Contact },
-    { path: '/', component: Home }
-  ]
+    { path: '/articles/:articleID', component: Article, props:propProcessing },
+    { path: '/contact', component: Contact, redirect: "/" },
+    { path: '/', component: Home },
+    { path: '/:404(.*)*', component: NotFound }
+  ],
+  linkActiveClass: 'active',
 });
 
 export default router;
