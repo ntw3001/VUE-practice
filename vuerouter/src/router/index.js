@@ -14,8 +14,9 @@ const propProcessing = (route) => {
 const router = createRouter ({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: '/articles', component: Articles },
-    { path: '/articles/:articleID', component: Article, props:propProcessing },
+    { path: '/articles', component: Articles, children: [
+      { path: ':articleID', component: Article, props:propProcessing }
+    ] },
     { path: '/contact', component: Contact, redirect: "/" },
     { path: '/', component: Home },
     { path: '/:404(.*)*', component: NotFound }
