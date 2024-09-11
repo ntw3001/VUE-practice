@@ -51,7 +51,7 @@
 <script setup>
 
   import axios from "axios"
-  import { useRoute } from 'vue-router'
+  import { useRoute, onBeforeRouteUpdate } from 'vue-router'
   import { onMounted, ref, watch } from 'vue'
 
   const props = defineProps(["bananas"]);
@@ -70,10 +70,14 @@
   onMounted(()=>{
     loadArticleData(route.params.articleID)})
 
-  watch(
-    () => route.params.articleID,
-    async newID => {
-      loadArticleData(newID)
-    }
-  )
+  // watch(
+  //   () => route.params.articleID,
+  //   async newID => {
+  //     loadArticleData(newID)
+  //   }
+  // )
+
+  onBeforeRouteUpdate(async(to)=>{
+    loadArticleData(to.params.articleID)
+  })
 </script>

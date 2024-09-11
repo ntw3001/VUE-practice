@@ -13,10 +13,22 @@ const propProcessing = (route) => {
   }
 }
 
+const checkAuth = () => {
+  const isAuth = true;
+  if (!isAuth) return '/login'
+}
+
+const isAdmin = () => {
+  const isAdmin = true;
+  if (!isAdmin) return '/login'
+}
+
 const router = createRouter ({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: '/articles', component: Articles },
+    { path: '/articles', component: Articles,
+        beforeEnter: [checkAuth, isAdmin]
+    },
     { path: '/articles/:articleID', component: Article, props: propProcessing },
     { path: '/contact', components: {default: Contact, notify: Notification}, name: 'contact' },
     { path: '/', component: Home },
@@ -29,7 +41,6 @@ const router = createRouter ({
 router.beforeEach((to, from)=>{
   console.log("Just checking some things friend");
   const isAuth = true;
-
   if(to.path === '/'){
     return true;
   } else {

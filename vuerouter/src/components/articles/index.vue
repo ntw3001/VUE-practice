@@ -34,7 +34,7 @@
 <script setup>
 
   import router from '@/router';
-import axios from 'axios'
+  import axios from 'axios'
   import { reactive, onMounted } from 'vue'
 
   const data = reactive({
