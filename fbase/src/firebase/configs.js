@@ -3,7 +3,7 @@ import { getFirestore } from "firebase/firestore";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyB8lzPjUp1g4cyuEDSq1ktIdQB1Xd7msjI",
+  apiKey: firebAPI,
   authDomain: "just-a-bit-of-vue-practice.firebaseapp.com",
   projectId: "just-a-bit-of-vue-practice",
   storageBucket: "just-a-bit-of-vue-practice.appspot.com",
