@@ -40,6 +40,27 @@
         </div>
         </div>
     </div>
-  
+
 </div>
 </template>
+
+<script setup>
+
+  import { DB } from '../firebase/configs.js'
+  import { collection, getDocs } from 'firebase/firestore'
+  import { ref } from 'vue'
+
+  const notes = ref([]);
+
+  const notesCollection = collection(DB, 'notes');
+
+  getDocs(notesCollection)
+  .then((snapshot) => {
+    let documents = [];
+    snapshot.docs.forEach(doc => {
+      documents.push({...doc.data(),id:doc.id});
+    });
+    notes.value = documents;
+  });
+
+</script>
