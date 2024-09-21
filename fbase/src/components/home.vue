@@ -8,10 +8,14 @@
             <h5 class="card-title">{{ note.title }}</h5>
             <p class="card-text">{{  note.description }}</p>
         </div>
+        <div class="card-footer">
+            <router-link :to="`/admin/update_article/${note.id}`">
+              Update Note
+            </router-link>
         </div>
+      </div>
     </div>
-
-</div>
+  </div>
 </template>
 
 <script setup>

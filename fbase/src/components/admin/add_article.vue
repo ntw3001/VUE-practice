@@ -11,7 +11,7 @@
                     <label for="description" class="form-label">Description</label>
                     <textarea class="form-control" id="description" rows="3" v-model="formData.description"></textarea>
                 </div>
-           
+
                 <button type="submit" class="btn btn-primary">
                     Submit
                 </button>
@@ -21,13 +21,21 @@
 </template>
 
 <script setup>
+  import { DB } from '../../firebase/configs.js';
+  import { collection, addDoc } from 'firebase/firestore';
   import { reactive } from 'vue';
+
   const formData = reactive({
     title:'',
     description:''
   });
 
-  const submitForm = () => {
-    console.log(formData);
+  const submitForm = async() => {
+    const notesCollection = collection(DB, 'notes');
+    await addDoc(notesCollection, {
+      ...formData
+    });
+    formData.title = '';
+    formData.description = '';
   }
 </script>
