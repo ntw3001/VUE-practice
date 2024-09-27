@@ -9,7 +9,7 @@
         >
           <span class="fs-4">FBase</span>
         </a>
-  
+
         <ul class="nav nav-pills">
           <li class="nav-item">
             <router-link to="/" class="nav-link">Home</router-link>
@@ -18,7 +18,11 @@
             <router-link to="/users/register" class="nav-link">Register</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="#" class="nav-link">Logout</router-link>
+            <p
+            role="button"
+            class="nav-link"
+            @click="handleSignOut"
+            >Logout</p>
           </li>
           <li class="nav-item">
             <router-link to="/admin/add_article" class="nav-link">Add</router-link>
@@ -27,12 +31,24 @@
       </header>
     </div>
   </template>
-  
-  <style>
+
+<script setup>
+
+  import { AUTH } from '@/firebase/configs';
+  import { signOut } from 'firebase/auth';
+
+const handleSignOut = () => {
+    signOut(AUTH);
+};
+
+</script>
+
+<style>
+
   body {
     padding: 0;
     margin: 0;
     font-family: "Roboto", sans-serif;
   }
-  </style>
-  
+
+</style>
