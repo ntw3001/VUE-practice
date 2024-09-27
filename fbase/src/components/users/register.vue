@@ -12,7 +12,7 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" v-model="formData.password">
                 </div>
-           
+
                 <button type="submit" class="btn btn-primary">
                     Submit
                 </button>
@@ -23,14 +23,39 @@
 
 
 <script setup>
-  import { reactive } from 'vue';
+  import { AUTH } from '@/firebase/configs';
+  import { createUserWithEmailAndPassword } from 'firebase/auth';
+  import { reactive, ref } from 'vue';
+  import { useRouter } from 'vue-router';
+
+  const router = useRouter();
+  const register = ref(true);
+
   const formData = reactive({
     email:'',
     password:''
-  });
+  })
+
+  const registerUser = async () => {
+    try {
+      const response = await createUserWithEmailAndPassword(
+        AUTH, formData.email, formData .password);
+    if (!response) {
+      throw new Error('Fuck! That broke my leg');
+      }
+      router.push('/');
+    }catch(error){
+      console.log(error.message)
+    }
+  }
+
 
   const submitForm = () => {
-    console.log(formData);
+    if(register.value){
+      registerUser();
+    } else {
+
+    }
   }
 
 </script>
