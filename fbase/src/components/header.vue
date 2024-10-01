@@ -41,8 +41,6 @@
 
   const isAuth = ref(AUTH.currentUser);
 
-  const user = ref(null);
-
   onAuthStateChanged(AUTH, (user) => {
     console.log('User state changed. Current user is:', user);
     isAuth.value = user;
@@ -51,12 +49,11 @@
   const handleSignOut = async () => {
     try {
         await signOut(AUTH);
-        user.value = null;
         router.push('/');
     } catch (error) {
         console.error('Error during sign out:', error);
     }
-};
+  };
 
 </script>
 
