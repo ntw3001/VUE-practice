@@ -14,6 +14,14 @@
         @click="subtract">
           -
         </button>
+        <hr/>
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-lg px-4"
+          @click="getPrizeHandler"
+        >
+          Get prize
+        </button>
       </div>
     </div>
   </div>
@@ -31,6 +39,10 @@ const add = () => {
 
 const subtract = () => {
   store.counter--;
+};
+
+const getPrizeHandler = () => {
+  alert(`${store.getPrize.prize} & ${store.getPrize.attempts}`);
 };
 
 </script>
