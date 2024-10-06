@@ -19,6 +19,9 @@ export const useCounterStore = defineStore('counter', {
     getCount(state){
       return state.counter;
     },
+    getAttempts(state){
+      return state.attempts;
+    },
     getPrize(state){
       let prize = "";
       state.attempts++;
@@ -27,7 +30,7 @@ export const useCounterStore = defineStore('counter', {
       }
       return {
         prize,
-        attempts: state.attempts
+        attempts: this.attempts
       };
     }
   }
