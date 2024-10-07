@@ -6,10 +6,16 @@
       <p>
         <strong> Change count: {{ store.counter }} </strong>
       </p>
-
-      <button type="button" class="btn btn-primary me-3" @click="add">+</button>
-      <button type="button" class="btn btn-outline-secondary" @click="subtract">-</button>
-
+      <button type="button"
+        class="btn btn-primary btn-lg px-4 gap-3"
+        @click="store.add">
+          +
+        </button>
+        <button type="button"
+        class="btn btn-outline-secondary btn-lg px-4"
+        @click="store.subtract">
+          -
+        </button>
       <hr/>
       <p>Name: {{ store.tsar.name }}</p>
       <p>Age: {{ store.tsar.age }}</p>
@@ -18,6 +24,21 @@
       class="btn btn-primary"
       @click="patchState"
       >Patch</button>
+
+      <div>
+        <hr/>
+          <ul>
+            <li v-for="(post) in store.posts">
+              {{ post.title }}
+            </li>
+          </ul>
+          <button
+            type="button"
+            class="btn btn-primary me-4"
+            @click="store.getPosts(10)">
+            Get posts
+          </button>
+      </div>
     </div>
   </div>
 </template>
@@ -27,14 +48,6 @@
 import { useCounterStore } from '@/stores/counter';
 
 const store = useCounterStore();
-
-const add = () => {
-  store.counter++;
-};
-
-const subtract = () => {
-  store.counter--;
-};
 
 const patchState = () => {
   store.$patch({

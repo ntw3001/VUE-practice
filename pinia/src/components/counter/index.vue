@@ -6,12 +6,12 @@
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
         <button type="button"
         class="btn btn-primary btn-lg px-4 gap-3"
-        @click="add">
+        @click="store.add">
           +
         </button>
         <button type="button"
         class="btn btn-outline-secondary btn-lg px-4"
-        @click="subtract">
+        @click="store.subtract">
           -
         </button>
         <hr/>
@@ -33,16 +33,8 @@ import { useCounterStore } from '@/stores/counter';
 
 const store = useCounterStore();
 
-const add = () => {
-  store.counter++;
-};
-
-const subtract = () => {
-  store.counter--;
-};
-
 const getPrizeHandler = () => {
-  alert(`${store.getPrize.prize} & ${store.getPrize.attempts}`);
+  alert(`Effort #${store.getPrize.attempts}: ${store.getPrize.prize}`);
 };
 
 </script>
