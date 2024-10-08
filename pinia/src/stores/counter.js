@@ -50,6 +50,7 @@ export const useCounterStore = defineStore('counter', {
         this.add();
         console.log(this.getCount);
         this.posts = response.data;
+        return response.data;
       }catch(error){
         console.error(error);
       }
